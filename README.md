@@ -27,6 +27,8 @@ Just click on the button below.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+Once deployed, go to _Resources_ tab and enable worker Dyno to start a Telegram connector.
+
 Now you can open chat with your Telegram bot via preferred Telegram client.
 
 ![](https://i.imgur.com/dwO6LYy.gif)
