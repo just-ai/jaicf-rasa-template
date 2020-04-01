@@ -1,1 +1,1 @@
-web: java -jar build/libs/jaicf-template-1.0.0-all.jar
+worker: java -jar build/libs/jaicf-template-1.0.0-all.jar
