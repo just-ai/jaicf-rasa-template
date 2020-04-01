@@ -1,8 +1,16 @@
 {
   "name": "Start on Heroku: JAICF",
-  "description": "A barebones JAICF Google Assistant action that runs on Heroku.",
-  "repository": "https://github.com/just-ai/jaicf-template",
+  "description": "A barebones JAICF+Rasa NLU that runs on Heroku.",
+  "repository": "https://github.com/just-ai/jaicf-rasa-template",
   "logo": "https://framework.just-ai.com/images/favicons/mstile-150x150.png",
   "image": "heroku/java",
-  "addons": ["mongolab:sandbox"]
+  "addons": ["mongolab:sandbox"],
+  "env": {
+    "RASA_URL": {
+      "description": "Rasa NLU server endpoint"
+    },
+    "TELEGRAM_TOKEN": {
+      "description": "Telegram bot token"
+    }
+  }
 }

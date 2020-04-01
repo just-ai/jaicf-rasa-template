@@ -1,36 +1,37 @@
-# JAICF Bot template
+# JAICF+Rasa project template
 
-Here is a ready to use JAICF bot template that can be run locally or deployed to Heroku server and connected to Google Assistant.
+Here is a ready to use [JAICF](https://framework.just-ai.com) bot template _written in Kotlin_ that utilises a [Rasa](https://rasa.com) NLU service and can be deployed to Heroku cloud with a single click.
+You can use this project as a templated JAICF-based project with Rasa NLU engine.
 
 ## How to use
 
-You can use this template locally on your PC or deploy it on Heroku server.
+You can deploy this template right on [Heroku](https://heroku.com) cloud and then modify and debug it locally on your PC.
 
-### Run locally
+### 1. Deploy Rasa server
 
-To run this project locally just create a new project from source codes in IntelliJ IDEA and run `Server.kt`.
-This will start the server on port 8080. 
+Once this project utilises a Rasa NLU, you have firstly to deploy a Rasa server to the Heroku cloud.
+Here is a [ready to use template](https://github.com/just-ai/rasa-heroku-template), that can be deployed to Heroku with a single click.
 
-#### Obtain global URL
+_Once deployed, copy the server's URL for the next step._
 
-You can then propagate your local instance to the Internet using [ngrok](https://ngrok.com/).
-And then run `ngrok http 8080` in the terminal to obtain public URL.
+### 2. Create a Telegram bot
 
-Copy this URL then and use it as a fulfillment URL in your [Dialogflow](https://dialogflow.com) agent (see below).
+This project is a [Telegram](https://telegram.org/) chatbot, thus you have to [create a Telegram bot](https://core.telegram.org/bots#3-how-do-i-create-a-bot) and obtain it's token.
 
-### Deploy to Heroku
+_JAICF is a [multi-platform framework](https://github.com/just-ai/jaicf-kotlin/wiki/Channels#multi-channel-support), thus this project can be connected to any channel, not only a Telegram._
 
-Just click on the button below to deploy this template on Heroku server.
+### 3. Deploy to Heroku
+
+Once you've deployed Rasa NLU and created Telegram bot, you can deploy this project to Heroku cloud.
+Just click on the button below.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-1. After deployment open the app and copy the URL of the app to clipboard.
-2. Then go to [Dialogflow](https://dialogflow.com), create a new agent and setup a fulfillment URL.
-3. Enable fulfillment for every intent in you agent.
-4. Click on _Google Assistant_ link on the left side bar to create a new Google Assistant Action connected to your Dialogflow agent.
-5. That's it! You now can start the app and see how you server responds with some responses.
+Now you can open chat with your Telegram bot via preferred Telegram client.
 
-### How to upload code changes to Heroku
+![](https://i.imgur.com/dwO6LYy.gif)
+
+## How to upload code changes to Heroku
 
 Please make the next steps to upload your changes on Heroku.
 
@@ -41,7 +42,7 @@ Run a terminal (or console) on your machine and type
 heroku login
 heroku git:clone -a <your Heroku application name>
 cd <your Heroku application name>
-git remote add origin https://github.com/just-ai/jaicf-template
+git remote add origin https://github.com/just-ai/jaicf-rasa-template
 git pull origin master
 ```
 
@@ -57,9 +58,17 @@ git push
 
 Heroku will build and deploy your changes automatically.
 
-### Data persistence
+## How to run locally
 
-This template uses mongoDB persistence layer available on Heroku.
-Heroku automatically creates a free sandbox database hosted by MongoLab.
+Import this project in [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) and run `Telegram.kt` file to test your changes in Telegram.
+Make sure you've provided your Telegram token in `TELEGRAM_TOKEN` environment variable.
 
-During the local development a simple in-memory storage is used.
+You have also to run your Rasa NLU server locally.
+Just use `rasa train` and `rasa run --enable-api` commands in your terminal.
+
+_You can also use [Docker](https://www.docker.com/). Just make changes in NLU model and then `docker build -t rasa .` and `docker run rasa` commands._
+
+## How to make changes in NLU model
+
+You can make changes of NLU model independently from the changes of this code.
+Please refer to the [Rasa template](https://github.com/just-ai/rasa-heroku-template) to learn how you can upload your NLU model changes.

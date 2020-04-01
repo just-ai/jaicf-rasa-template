@@ -7,12 +7,12 @@ plugins {
 group = "com.justai.jaicf"
 version = "1.0.0"
 
-val jaicf = "0.4.0"
+val jaicf = "0.4.1"
 val slf4j = "1.7.30"
 val ktor = "1.3.1"
 
 application {
-    mainClassName = "com.justai.jaicf.template.ServerKt"
+    mainClassName = "com.justai.jaicf.template.channel.TelegramKt"
 }
 
 repositories {
@@ -28,10 +28,11 @@ dependencies {
     implementation("org.slf4j:slf4j-log4j12:$slf4j")
 
     implementation("com.justai.jaicf:core:$jaicf")
-    implementation("com.justai.jaicf:google-actions:$jaicf")
+    implementation("com.justai.jaicf:rasa:$jaicf")
+    implementation("com.justai.jaicf:telegram:$jaicf")
     implementation("com.justai.jaicf:mongo:$jaicf")
 
-    implementation("io.ktor:ktor-server-netty:$ktor")
+    implementation("io.ktor:ktor-client-jackson:$ktor")
 }
 
 tasks {
